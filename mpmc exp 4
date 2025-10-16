@@ -1,0 +1,23 @@
+#include <reg51.h>
+sbit a = P0^0;
+void delay();
+void main()
+{
+while(1)
+{
+a=0;
+delay();
+a=1;
+delay();
+}
+}
+void delay()
+{
+TMOD = 0X01;
+TL0 = 0X00;
+TH0 = 0XCA;
+TR0 = 1;
+while(TF0==0);
+TR0=0;
+TF0=0;
+}
